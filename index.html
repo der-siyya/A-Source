@@ -56,24 +56,25 @@
             .download-btn:hover {
                 background: linear-gradient(45deg, #1a1a1a, #000, #1a1a1a, #004080);
                 box-shadow: 0 0 15px rgba(0, 170, 255, 0.9), 0 0 25px rgba(0, 170, 255, 0.7);
-                transform: scale(1.05);
             }
 
             .download-btn::before {
                 content: '';
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 300%;
-                height: 300%;
-                background: radial-gradient(circle, rgba(0, 170, 255, 0.4), transparent);
+                top: var(--y, 50%);
+                left: var(--x, 50%);
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle closest-side, rgba(0, 170, 255, 0.6), transparent);
                 transform: translate(-50%, -50%) scale(0);
-                transition: transform 0.5s ease;
-                border-radius: 50%;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
             }
 
             .download-btn:hover::before {
-                transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 1;
             }
 
             h1 {
@@ -124,24 +125,25 @@
             #privacy-box button:hover {
                 background: linear-gradient(45deg, #1a1a1a, #000, #1a1a1a, #004080);
                 box-shadow: 0 0 15px rgba(0, 170, 255, 0.9), 0 0 25px rgba(0, 170, 255, 0.7);
-                transform: scale(1.05);
             }
 
             #privacy-box button::before {
                 content: '';
                 position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 300%;
-                height: 300%;
-                background: radial-gradient(circle, rgba(0, 170, 255, 0.4), transparent);
+                top: var(--y, 50%);
+                left: var(--x, 50%);
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle closest-side, rgba(0, 170, 255, 0.6), transparent);
                 transform: translate(-50%, -50%) scale(0);
-                transition: transform 0.5s ease;
-                border-radius: 50%;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+                opacity: 0;
+                pointer-events: none;
             }
 
             #privacy-box button:hover::before {
-                transform: translate(-50%, -50%) scale(1);
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 1;
             }
         </style>
     </head>
@@ -173,6 +175,18 @@
             function agreePrivacy() {
                 document.getElementById('privacy-ui').style.display = 'none';
             }
+
+            // Track mouse position for hover effect
+            const buttons = document.querySelectorAll('.download-btn, #privacy-box button');
+            buttons.forEach(button => {
+                button.addEventListener('mousemove', (e) => {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    button.style.setProperty('--x', `${x}px`);
+                    button.style.setProperty('--y', `${y}px`);
+                });
+            });
         </script>
     </body>
 </html>
