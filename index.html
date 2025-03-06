@@ -43,17 +43,37 @@
                 font-size: 18px;
                 font-weight: bold;
                 color: white;
-                background: linear-gradient(45deg, #000, #1a1a1a, #000);
+                background: linear-gradient(45deg, #000, #1a1a1a, #000, #003366);
                 border: 2px solid #00aaff;
                 border-radius: 30px;
                 text-decoration: none;
-                transition: all 0.3s ease;
+                transition: all 0.5s ease;
                 cursor: pointer;
+                position: relative;
+                overflow: hidden;
             }
 
             .download-btn:hover {
-                background: linear-gradient(45deg, #1a1a1a, #000, #1a1a1a);
-                box-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+                background: linear-gradient(45deg, #1a1a1a, #000, #1a1a1a, #004080);
+                box-shadow: 0 0 15px rgba(0, 170, 255, 0.9), 0 0 25px rgba(0, 170, 255, 0.7);
+                transform: scale(1.05);
+            }
+
+            .download-btn::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 300%;
+                height: 300%;
+                background: radial-gradient(circle, rgba(0, 170, 255, 0.4), transparent);
+                transform: translate(-50%, -50%) scale(0);
+                transition: transform 0.5s ease;
+                border-radius: 50%;
+            }
+
+            .download-btn:hover::before {
+                transform: translate(-50%, -50%) scale(1);
             }
 
             h1 {
@@ -92,16 +112,36 @@
                 font-size: 16px;
                 font-weight: bold;
                 color: white;
-                background: linear-gradient(45deg, #000, #1a1a1a, #000);
+                background: linear-gradient(45deg, #000, #1a1a1a, #000, #003366);
                 border: 2px solid #00aaff;
                 border-radius: 25px;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 0.5s ease;
+                position: relative;
+                overflow: hidden;
             }
 
             #privacy-box button:hover {
-                background: linear-gradient(45deg, #1a1a1a, #000, #1a1a1a);
-                box-shadow: 0 0 10px rgba(0, 170, 255, 0.7);
+                background: linear-gradient(45deg, #1a1a1a, #000, #1a1a1a, #004080);
+                box-shadow: 0 0 15px rgba(0, 170, 255, 0.9), 0 0 25px rgba(0, 170, 255, 0.7);
+                transform: scale(1.05);
+            }
+
+            #privacy-box button::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 300%;
+                height: 300%;
+                background: radial-gradient(circle, rgba(0, 170, 255, 0.4), transparent);
+                transform: translate(-50%, -50%) scale(0);
+                transition: transform 0.5s ease;
+                border-radius: 50%;
+            }
+
+            #privacy-box button:hover::before {
+                transform: translate(-50%, -50%) scale(1);
             }
         </style>
     </head>
